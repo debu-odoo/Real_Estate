@@ -124,6 +124,7 @@ class EstatePropertyOffers(models.Model):
  
 class EstateProperty(models.Model) :
     _name = 'estate.property'
+    _inherit ='portal.mixin'
     _description = 'This is the Real Estate Module'
     _sql_constraints = [('positive_price','check(expected_price > 0)','Enter Positive value')] # Constraints [Exception Error] ...
 
@@ -178,6 +179,11 @@ class EstateProperty(models.Model) :
             "domain": [('property_id', '=', self.id),('status','=','accepted')]
             }
 
+    def _compute_access_url(self):
+        super()._compute_access_url()
+        for record in self:
+            record.access_url = '/my/properties/%s' %(record.id)
+
 
     # Many2One ...
     property_type_id = fields.Many2one('estate.property.type')
@@ -193,7 +199,7 @@ class EstateProperty(models.Model) :
     
     # Compute - Fields ...
 
-    @api.depends('living_area' , 'garden_area')
+    @api.depends('living_area', 'garden_area')
     def _compute_area(self): # Recordset [Collection od Record]
         for record in self:
             record.total_area = record.living_area + record.garden_area

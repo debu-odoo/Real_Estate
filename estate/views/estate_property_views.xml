@@ -11,7 +11,7 @@
                 <field name="price"/>
                 <field name="partner_id"/>
                 <field name="status"/>
-                
+
             </tree>
         </field>
     </record>
@@ -24,7 +24,7 @@
                 <field name="name"/>
                 <field name="expected_price"/>
                 <field name="selling_price"/>
-                
+
             </tree>
         </field>
     </record>
@@ -36,12 +36,14 @@
             <form>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                    <button type="action" name='%(real_estate_property_offer_action)d' class="oe_stat_button">
-                        <field name="offer_count" string="offers" widget="statinfo" />
-                    </button>
+                        <button type="action" name='%(real_estate_property_offer_action)d' class="oe_stat_button">
+                            <field name="offer_count" string="offers" widget="statinfo" />
+                        </button>
                     </div>
                     <div class="oe.title">
-                        <h1><field name="name"/></h1>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
                         <!-- <field name="property_type_id"/> -->
                     </div>
                     <notebook>
@@ -78,25 +80,27 @@
             <form>
                 <sheet>
                     <div class="oe.title">
-                        <h1><field name="name"/></h1>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
                         <!-- <field name="property_type_id"/> -->
                     </div>
                     <group>
                         <group>
-                            <field name="status"/> 
-                            <field name="partner_id"/> 
-                            <field name="property_id"/> 
+                            <field name="status"/>
+                            <field name="partner_id"/>
+                            <field name="property_id"/>
                         </group>
                         <group>
                             <field name="name" />
-                            <field name="image" widget="image" class="oe_avatar"/>    
+                            <field name="image" widget="image" class="oe_avatar"/>
                             <field name="validity"/>
-                             <field name="salesman_id" />
+                            <field name="salesman_id" />
                         </group>
                         <group>
                             <field name="best_price"/>
                             <!-- <field name="date_deadline"/> -->
-                           
+
                         </group>
                     </group>
                     <notebook>
@@ -176,7 +180,7 @@
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <form>
-                <header> <!--Sold And Cancle Button -->
+                <header>                    <!--Sold And Cancle Button -->
                     <button name="action_sold" type="object" string="Sold"/>
                     <button name="action_cancle" type="object" string="Cancle"/>
                     <field name="state" widget="statusbar" />
@@ -184,17 +188,19 @@
 
                 <sheet>
                     <div class="oe.title">
-                        <h1><field name="name"/></h1>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
                         <field name="property_type_id"/>
                     </div>
                     <group>
                         <group>
                             <!-- <field name="state"/> -->
-                            <field name="property_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>    
+                            <field name="property_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                             <field name="buyer_id" domain="[('is_buyer', '=' , ['True'])]" />
                         </group>
                         <group>
-                            <field name="image" widget="image" class="oe_avatar"/>    
+                            <field name="image" widget="image" class="oe_avatar"/>
                             <field name="validity"/>
                         </group>
                         <group>
@@ -247,8 +253,8 @@
                                 <tree>
                                     <field name="partner_id"/>
                                     <field name="price"/>
-                                        <button name="action_accepted" type="object" string="Accepted" icon="fa-check"/>
-                                        <button name="action_refused" type="object" string="Rejected" icon="fa-close"/>
+                                    <button name="action_accepted" type="object" string="Accepted" icon="fa-check"/>
+                                    <button name="action_refused" type="object" string="Rejected" icon="fa-close"/>
                                     <field name="status"/>
                                 </tree>
                             </field>
@@ -266,9 +272,9 @@
         </field>
     </record>
 
-    
 
-<record id="estate_property_search" model="ir.ui.view">
+
+    <record id="estate_property_search" model="ir.ui.view">
         <field name="name">Estate Property Search</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
@@ -285,7 +291,7 @@
                 <filter name="4 or more bedrooms" domain="[('bedrooms', '>', 3)]"/>
                 <filter name="Properties with Garage" domain="[('garage', '=', True)]"/>
                 <filter name="2 bedrooms with garden" domain="[('bedrooms', '=', 2),('garage', '=', True)]"/>
-                <group expand="1" string="Group By"> 
+                <group expand="1" string="Group By">
                     <filter string="Postal Code" name="postcode" context="{'group_by': 'postcode'}"/>
                     <filter string="Number of bedrooms" name="bedrooms" context="{'group_by': 'bedrooms'}"/>
                 </group>
@@ -310,7 +316,7 @@
                 <filter name="4 or more bedrooms" domain="[('bedrooms', '>', 3)]"/>
                 <filter name="Properties with Garage" domain="[('garage', '=', True)]"/>
                 <filter name="2 bedrooms with garden" domain="[('bedrooms', '=', 2),('garage', '=', True)]"/>
-                <group expand="1" string="Group By"> 
+                <group expand="1" string="Group By">
                     <filter string="Postal Code" name="postcode" context="{'group_by': 'postcode'}"/>
                     <filter string="Number of bedrooms" name="bedrooms" context="{'group_by': 'bedrooms'}"/>
                 </group>
@@ -349,37 +355,43 @@
         </field>
     </record>
 
-    
+
     <record id="estate_model_kanban" model="ir.ui.view">
-            <field name="name">Estate Property Kanban</field>
-            <field name="model">estate.property</field>
-            <field name="arch" type="xml">
-                <kanban class="o_res_partner_kanban">
-                    <field name="state"/>
-                    <field name="image"/>
-                    <field name="id"/>
-                    <templates>
-                        <t t-name="kanban-box">
+        <field name="name">Estate Property Kanban</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <kanban class="o_res_partner_kanban">
+                <field name="state"/>
+                <field name="image"/>
+                <field name="id"/>
+                <templates>
+                    <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
                             <div class="o_kanban_details">
-                                <strong><field name="name"/></strong>
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
                                 <ul>
-                                    <li><field name="date_availability"/></li>
-                                    <li><field name="expected_price"/></li>
+                                    <li>
+                                        <field name="date_availability"/>
+                                    </li>
+                                    <li>
+                                        <field name="expected_price"/>
+                                    </li>
                                 </ul>
-                                    <button class="btn btn-primary" string="Add offer" name="open_offers" type="object" >
-                                        <span>Offers</span>
-                                    </button>
-                                    <button class="btn btn-primary" string="Confirm Offer" name="%(estate_property_accepted_offer_action)d" type="action">
-                                       <span>Confirm Offers</span>
-                                    </button>
+                                <button class="btn btn-primary" string="Add offer" name="open_offers" type="object">
+                                    <span>Offers</span>
+                                </button>
+                                <button class="btn btn-primary" string="Confirm Offer" name="%(estate_property_accepted_offer_action)d" type="action">
+                                    <span>Confirm Offers</span>
+                                </button>
                             </div>
                         </div>
-                        </t>
-                    </templates>
-                </kanban>
-            </field>
-        </record>
-    
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
 
 </odoo>

@@ -23,7 +23,8 @@
                 </thead>
                 <t t-foreach="properties" t-as="property">
                     <tr>
-                        <td><t t-esc="property.name"/></td>
+                        <td><a t-att-href="properties.get_portal_url()"><t t-esc="property.name"/></a></td>
+                        <!-- <td><t t-esc="property.name"/></td> -->
                         <td><t t-esc="property.expected_price"/></td>
                     </tr>
                 </t>
@@ -42,5 +43,11 @@
        
     </template>
 
+    <!-- Template for property view -->
+    <template id="property_portal_view">
+        <t t-call="portal.portal_layout">
+            <span>Hello World</span>
+        </t>
+    </template>
 
 </odoo>

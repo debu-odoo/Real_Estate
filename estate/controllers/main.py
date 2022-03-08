@@ -31,8 +31,8 @@ class MyController(portal.CustomerPortal):
         return values
         
 
-    @http.route('/my/properties', auth='user', website=True)
-    def my_properties(self,**kw):
+    @http.route(['/my/properties/<int:id>'], auth='user', website=True)
+    def my_properties(self,id,**kw):
         estate = request.env['estate.property'].search([])
         values = self._prepare_portal_layout_values()
         values.update({
@@ -40,5 +40,5 @@ class MyController(portal.CustomerPortal):
             'page_name':'my_properties',
         })
 
-        return http.request.render('estate.portal_my_properties' , values)
+        return http.request.render('estate.property_portal_view' , values)
 
