@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="t_report" model="ir.actions.report">
+        <field name="name">testing Report</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sale_order_and_invoice.testing_report</field>
+        <field name= "report_file">sale_order_and_invoice.testing_report</field>
+        <field name="binding_model_id" ref="model_sale_order"></field>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="testing_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <center>
+                    <h1>Denisha Buha</h1>
+                </center>
+            </t>
+        </t>
+    </template>
+
+</odoo>

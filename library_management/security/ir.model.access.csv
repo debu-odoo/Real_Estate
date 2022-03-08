@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-library_management.access_library_books,access_library_books,library_management.model_library_books,base.group_user,1,1,1,1
-library_management.access_books_category,access_books_category,library_management.model_books_category,base.group_user,1,1,1,1
-library_management.access_book_request,access_book_request,library_management.model_book_request,base.group_user,1,0,0,0
-library_management.access_book_register,access_book_register,library_management.model_book_register,base.group_user,1,1,1,1
-library_management.access_lib_book,access_lib_book,library_management.model_lib_book,base.group_user,1,1,1,1
-library_management.access_book_stock,access_book_stock,library_management.model_book_stock,base.group_user,1,1,1,1

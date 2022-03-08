@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- res_partner form view -->
+        
+    <record id="res_partner_inherit_form" model="ir.ui.view">
+        <field name="name">res.partner.inherit</field>
+        <field name="model">res.partner</field>
+        <field name = "inherit_id" ref = "base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='internal_notes']" position="after">
+                 <page name = "inventory" string = "Inventory">
+                            <field name="partner_wise_uom_ids">
+                                <tree editable="bottom">
+                                    <field name="product_id" widget = "Many2one"/>
+                                    <field name="uom_id" widget = "Many2one"/>
+                                    <field name="uom_cat_id" invisible="True"/>
+                                </tree>
+                            </field>
+                </page>
+            </xpath>
+        </field>
+   </record>
+
+</odoo>
